@@ -264,21 +264,28 @@ class List(Value):
         self.elements = elements
 
     def add_to(self,other):
-        list = self.copy()
-        list.elements.append(other)
+        if isinstance(other,List): return None,Value.illegal_operation(self,other)
+        list = List([])
+        for element in self.elements:
+            list.elements.append(element)
+        list.elements.append(other.value)
         return list,None
     
     def mul_by(self, other):
         if isinstance(other,List):
-            list = self.copy()
+            list = List([])
+            for element in self.elements:
+                list.elements.append(element)
             list.elements.extend(other.elements)
             return list,None
         else:
             return None,Value.illegal_operation(self,other)
 
     def sub_by(self,other):
-        if isinstance(other,Number):
-            list = self.copy()
+	if isinstance(other,Number):
+            list = List([])
+            for element in self.elements:
+                list.elements.append(element)
             try:
                 list.elements.pop(other.value)
                 return list,None
@@ -286,6 +293,7 @@ class List(Value):
                 return None,RuntimeError(other.pos_start,other.pos_end,"Index out of bound",self.context)
         else:
             return None,Value.illegal_operation(self,other)
+        
         
     def colon_by(self,other):
         if isinstance(other,Number):
