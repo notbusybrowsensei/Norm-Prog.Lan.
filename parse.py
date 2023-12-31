@@ -209,7 +209,7 @@ class Parser(object):
         return res.success((cases,else_case))
     
 
-    def elif_expession(self):
+    def elif_expression(self):
         return self.if_expression_cases('ELIF')
     
 
