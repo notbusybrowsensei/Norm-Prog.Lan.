@@ -1,0 +1,27 @@
+@ LEAP YEAR PROBLEM
+
+
+FUNC checkIfLeap(year)
+    VAR ans = "None"
+    IF year%4 == 0 THEN
+        IF year%100 != 0 THEN
+            VAR ans = "LEAP"
+        ELSE
+            IF year%400 == 0 THEN
+                VAR ans = "LEAP"
+            ELSE
+                VAR ans = "NOT LEAP"
+            END
+        END
+    ELSE
+        VAR ans = "NOT LEAP"
+    END
+    RETURN ans
+END
+
+
+VAR num = INTINPUT()
+
+VAR result = checkIfLeap(num)
+
+PRINT(result)
