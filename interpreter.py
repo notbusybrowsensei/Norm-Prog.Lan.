@@ -311,7 +311,7 @@ class List(Value):
         return copy
     
     def __str__(self):
-        return f'{", ".join([str(element) for element in self.elements])}'
+        return f'[{", ".join([str(element) for element in self.elements])}]'
     
     def __repr__(self):
         return f'[{", ".join([str(element) for element in self.elements])}]'
